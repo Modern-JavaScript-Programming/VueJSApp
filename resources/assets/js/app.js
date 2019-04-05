@@ -1,29 +1,24 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-new */
 import Vue from 'vue'
+require('./bootstrap')
+
+// import Hello from './components/Hello.vue'
 
 // eslint-disable-next-line no-unused-vars
-const app = new Vue({
-  el: '#vue-app',
-  data: {
-    age: 27,
-    firstName: '',
-    lastName: ''
-  },
+// const app = new Vue({
+//   el: '#vue-app'
 
-  methods: {
-    add: function () {
-      this.age++
-    },
+//   // components: {
+//   //   Hello
+//   // }
+//   // render: h => h(Hello)
+// })
 
-    subtract: function () {
-      this.age--
-    },
-
-    logfName: function () {
-      console.log(this.firstName)
-    },
-
-    loglName: function () {
-      console.log(this.lastName)
+const VueApp = new Vue(
+  {
+    el: '#vue-app',
+    data: {
+      count: 0
     }
-  }
-})
+  })
