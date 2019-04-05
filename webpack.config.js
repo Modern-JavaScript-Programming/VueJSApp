@@ -1,24 +1,31 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const _entry = {
   'index': ['./resources/assets/js/app.js', './resources/assets/scss/app.scss']
 }
 
 const _module = {
-  rules: [{
-    test: /\.scss$/,
-    exclude: /node_modules/,
-    use: [
-      MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader'
-      },
-      {
-        loader: 'sass-loader'
-      }
-    ]
-  }]
+  rules: [
+    {
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader'
+        },
+        {
+          loader: 'sass-loader'
+        }
+      ]
+    },
+    {
+      test: /\.vue$/,
+      loader: 'vue-loader'
+    }
+  ]
 }
 module.exports = {
   // This is the "main" file which should include all other modules
@@ -38,7 +45,8 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '../css/style.css'
-    })
+    }),
+    new VueLoaderPlugin()
 
   ]
 }
